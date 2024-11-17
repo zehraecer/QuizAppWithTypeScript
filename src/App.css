@@ -1,42 +1,85 @@
 #root {
-  max-width: 1280px;
+  max-width: 1160px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  background-color: #f4f6fa !important;
+
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+
+  font-family: Rubik;
+  font-weight: 300;
+
+}
+
+.quiz-wrapper {
+  margin-top: 99px;
+}
+
+.quiz-right {}
+
+.quiz-right-div {
+  background-color: #fff;
+  border-radius: 24px;
+  margin-bottom: 24px;
+
+
+  img {
+    padding: 8px;
+    background-color: #FFF1E9;
+    border-radius: 8px;
   }
-  to {
-    transform: rotate(360deg);
+
+  span {
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 28px;
+    text-align: left;
+    color: #313E51;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.quiz-left-span1 {
+
+  font-size: 64px;
+  line-height: 64px;
+  text-align: left;
+  color: #313E51;
+
 }
 
-.card {
-  padding: 2em;
+
+.quiz-left-span2 {
+
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 64px;
+  color: #313E51;
+  margin-top: 8px;
+  text-align: left;
 }
 
-.read-the-docs {
-  color: #888;
+.quiz-left-span3 {
+
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: left;
+  color: #626C7F;
+  margin-top: 48px;
+
+
 }
