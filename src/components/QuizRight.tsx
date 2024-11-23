@@ -1,23 +1,38 @@
 // import { useEffect } from "react"
-import { useContext, useState } from "react";
-import { MyContext, Quiz } from "../App";
+import { useContext, useEffect, useState } from "react";
+import { MyContext, Quiz, TypeCategory } from "../App";
 import quizes from "../data/data.json"
 
 export const QuizRight = () => {
-
-    const { data, setData } = useContext(MyContext)
-
-    console.log(data);
-
-    const deneme = (title: Quiz) => {
-        console.log(title);
-        const s = quizes.quizzes
-        console.log(s.find(c => c.title === title));
-
-
-
-
+    const context = useContext(MyContext);
+    if (!context) {
+        throw new Error("Hata: `MyContext` değeri `undefined` oldu. Bu bileşen yalnızca `MyContext.Provider` içinde kullanılabilir.");
     }
+    const { data, setData, clickedTitle, setClickedTitle, isCategory, setIsCategory, questionsCategory, setQuestionsCategory } = context;
+
+
+    const deneme = (title: String) => {
+
+        setIsCategory(!isCategory)
+        if (isCategory) {
+            const Questions = quizes.quizzes
+            const categoryQuestions = Questions.find(question => question.title === title)
+            if (categoryQuestions && categoryQuestions.questions) {
+                const z = categoryQuestions.questions;
+                console.log(z);
+
+                setQuestionsCategory(z);
+            }
+        }
+    }
+
+    console.log(questionsCategory);
+
+
+    useEffect(() => {
+
+
+    }, [isCategory])
 
     return (
         <div className="quiz-right ">
@@ -27,7 +42,6 @@ export const QuizRight = () => {
                     <span>{e.title}</span>
                 </div>
             ))
-
             }
         </div>
     )
