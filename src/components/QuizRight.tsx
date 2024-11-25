@@ -47,7 +47,9 @@ export const QuizRight = () => {
                     <div key={index} className="d-flex flex-row gap-3 justify-content-start align-items-center p-3 quiz-right-div" >
 
                         <span>
-                            <span></span>
+                            <span>{index === 0 ? <span>A</span> : index === 1 ? <span> B</span> : index === 2 ? <span> C</span> : <span> D</span>
+
+                            }</span>
                             {a}
                         </span>
                     </div>
