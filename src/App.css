@@ -42,7 +42,7 @@ span {
     border-radius: 8px;
   }
 
-  span {
+  p {
     font-size: 28px;
     font-weight: 500;
     line-height: 28px;
@@ -82,4 +82,61 @@ span {
   margin-top: 48px;
 
 
+}
+
+.optionsDiv {
+  gap: 10px;
+  padding: 18px;
+}
+
+.option-one {
+
+  padding: 16px 18px 12px 18px;
+  background-color: #F4F6FA;
+  border-radius: 8px;
+
+
+  span {
+
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 28px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #626C7F;
+  }
+
+
+}
+
+.option-two {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+  text-align: left;
+  color: #313E51;
+}
+
+.submitAnswer {
+  margin-top: 32px;
+  padding-block: 32px;
+  background-color: #A729F5;
+  border-radius: 24px;
+
+  span {
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 28px;
+    text-align: left;
+    color: #fff;
+  }
+}
+
+.kirmizi {
+  border: 3px solid var(--Red, #EE5454)
+}
+
+.green {
+  border: 3px solid var(--Green, #26D782)
 }

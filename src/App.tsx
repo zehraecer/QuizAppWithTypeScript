@@ -18,6 +18,12 @@ export interface State {
   setIsCategory: React.Dispatch<React.SetStateAction<boolean>>;
   questionsCategory: TypeCategory[]
   setQuestionsCategory: React.Dispatch<React.SetStateAction<TypeCategory[]>>
+  questionOrder: number;
+  setQuestionOrder: React.Dispatch<React.SetStateAction<number>>
+  clickedOption: string;
+  setClickedOption: React.Dispatch<React.SetStateAction<string>>
+  isSubmit: boolean;
+  setIsSubmit: React.Dispatch<React.SetStateAction<boolean>>
 
 }
 
@@ -44,10 +50,18 @@ function App() {
   const [isCategory, setIsCategory] = useState<boolean>(true)
   const [clickedTitle, setClickedTitle] = useState<boolean>(false)
   const [questionsCategory, setQuestionsCategory] = useState<TypeCategory[]>([])
+  const [questionOrder, setQuestionOrder] = useState<number>(0)
+  const [clickedOption, setClickedOption] = useState<string>("")
+  const [isSubmit, setIsSubmit] = useState<boolean>(true)
 
 
   return (
-    <MyContext.Provider value={{ data, setData, clickedTitle, setClickedTitle, isCategory, setIsCategory, questionsCategory, setQuestionsCategory }}>
+    <MyContext.Provider value={{
+      data, setData, clickedTitle,
+      setClickedTitle, isCategory, setIsCategory, questionsCategory,
+      setQuestionsCategory, questionOrder, setQuestionOrder,
+      clickedOption, setClickedOption, isSubmit, setIsSubmit
+    }}>
 
       <div className="">
         <div>

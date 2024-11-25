@@ -1,18 +1,21 @@
 // import { useEffect } from "react"
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { MyContext, Quiz, TypeCategory } from "../App";
 import quizes from "../data/data.json"
 
 export const QuizRight = () => {
     const context = useContext(MyContext);
+    const [border, setborder] = useState<string>("border")
     if (!context) {
         throw new Error("Hata: `MyContext` değeri `undefined` oldu. Bu bileşen yalnızca `MyContext.Provider` içinde kullanılabilir.");
     }
-    const { data, setData, clickedTitle, setClickedTitle, isCategory, setIsCategory, questionsCategory, setQuestionsCategory } = context;
+    const { data, setData, clickedTitle, setClickedTitle, isCategory, setIsCategory, questionsCategory, setQuestionsCategory, questionOrder, setQuestionOrder, clickedOption, setClickedOption, isSubmit, setIsSubmit } = context;
+
+
+
 
 
     const CategoryBtns = (title: String) => {
-
         setIsCategory(!isCategory)
         if (isCategory) {
             const Questions = quizes.quizzes
@@ -27,35 +30,78 @@ export const QuizRight = () => {
     }
 
     useEffect(() => {
-        console.log(isCategory);
 
     }, [isCategory])
 
+    const clickedOptionBtns = (a: string, b: string) => {
+        setClickedOption(a)
+        if (a === b) {
+            console.log("doğru cevap");
+            setborder("green")
+
+        } else {
+            console.log("yanlış cevap");
+            setborder("kirmizi")
+        }
+    }
+
+    const submitBtn = () => {
+        if (border === "kirmizi" || border === "green") {
+            setIsSubmit(false)
+            setborder("")
+        }
+    }
+
+    const nextQuestionBtns = () => {
+        setQuestionOrder(questionOrder + 1)
+        setIsSubmit(true)
+
+    }
+
+    useEffect(() => {
+
+    }, [clickedOption])
+
     return (
-        <div className="quiz-right ">
+        <div className="quiz-right">
             {isCategory ?
+
                 data.map((e: Quiz, index: number) => (
-                    <div key={index} className="d-flex flex-row gap-3 justify-content-start align-items-center p-3 quiz-right-div" onClick={() => CategoryBtns(e.title)}>
+                    <div role="button" key={index} className="d-flex flex-row gap-3 justify-content-start align-items-center p-3 quiz-right-div" onClick={() => CategoryBtns(e.title)}>
                         <img src={e.icon} alt="" />
-                        <span>{e.title}</span>
+                        <p>{e.title}</p>
                     </div>
                 ))
                 :
+                <div className="">
 
-                questionsCategory[0]?.options.map((a: String, index: number) => (
+                    {questionsCategory[questionOrder]?.options.map((a: string, index: number) => (
 
-                    <div key={index} className="d-flex flex-row gap-3 justify-content-start align-items-center p-3 quiz-right-div" >
+                        <div role="button" onClick={() => clickedOptionBtns(a, questionsCategory[questionOrder]?.answer)} key={index} className={`d-flex flex-row gap-3 justify-content-start align-items-center p-3 quiz-right-div optionsDiv ${clickedOption === a ? border : ""}`}>
 
-                        <span>
-                            <span>{index === 0 ? <span>A</span> : index === 1 ? <span> B</span> : index === 2 ? <span> C</span> : <span> D</span>
+                            <span className="option-one">
+                                {index === 0 ? <span>A</span> : index === 1 ? <span> B</span> : index === 2 ? <span> C</span> : <span> D</span>}
+                            </span>
+                            <span className={`option-two `}> {a}</span>
+                        </div>
+                    ))
+                    }
 
-                            }</span>
-                            {a}
-                        </span>
-                    </div>
-                ))
+                    {isSubmit ?
+
+                        <div role="button" onClick={submitBtn} className="submitAnswer">
+                            <span >Submit Answer</span>
+                        </div>
+                        :
+                        <div role="button" className="submitAnswer" onClick={nextQuestionBtns}>
+                            <span >Next Question</span>
+                        </div>
+                    }
+                </div>
 
             }
+
+
         </div >
     )
 }
