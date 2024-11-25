@@ -11,7 +11,7 @@ export const QuizRight = () => {
     const { data, setData, clickedTitle, setClickedTitle, isCategory, setIsCategory, questionsCategory, setQuestionsCategory } = context;
 
 
-    const deneme = (title: String) => {
+    const CategoryBtns = (title: String) => {
 
         setIsCategory(!isCategory)
         if (isCategory) {
@@ -19,30 +19,41 @@ export const QuizRight = () => {
             const categoryQuestions = Questions.find(question => question.title === title)
             if (categoryQuestions && categoryQuestions.questions) {
                 const z = categoryQuestions.questions;
-                console.log(z);
+                console.log(z[0].options);
 
                 setQuestionsCategory(z);
             }
         }
     }
 
-    console.log(questionsCategory);
-
-
     useEffect(() => {
-
+        console.log(isCategory);
 
     }, [isCategory])
 
     return (
         <div className="quiz-right ">
-            {data.map((e: Quiz) => (
-                <div className="d-flex flex-row gap-3 justify-content-start align-items-center p-3 quiz-right-div" onClick={() => deneme(e.title)}>
-                    <img src={e.icon} alt="" />
-                    <span>{e.title}</span>
-                </div>
-            ))
+            {isCategory ?
+                data.map((e: Quiz, index: number) => (
+                    <div key={index} className="d-flex flex-row gap-3 justify-content-start align-items-center p-3 quiz-right-div" onClick={() => CategoryBtns(e.title)}>
+                        <img src={e.icon} alt="" />
+                        <span>{e.title}</span>
+                    </div>
+                ))
+                :
+
+                questionsCategory[0]?.options.map((a: String, index: number) => (
+
+                    <div key={index} className="d-flex flex-row gap-3 justify-content-start align-items-center p-3 quiz-right-div" >
+
+                        <span>
+                            <span></span>
+                            {a}
+                        </span>
+                    </div>
+                ))
+
             }
-        </div>
+        </div >
     )
 }
