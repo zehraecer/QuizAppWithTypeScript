@@ -28,7 +28,7 @@ span {
   margin-top: 99px;
 }
 
-.quiz-right {}
+/* .quiz-right {} */
 
 .quiz-right-div {
   background-color: #fff;
@@ -49,6 +49,12 @@ span {
     text-align: left;
     color: #313E51;
   }
+}
+
+.option-img {
+  padding: 0%;
+  background-color: transparent !important;
+
 }
 
 .quiz-left-span1 {
@@ -133,8 +139,12 @@ span {
   }
 }
 
-.kirmizi {
-  border: 3px solid var(--Red, #EE5454)
+.red {
+  border: 3px solid var(--Red, #EE5454);
+  -webkit-transition: border 200ms ease-out;
+  -moz-transition: border 200ms ease-out;
+  -o-transition: border 200ms ease-out;
+  transition: border 200ms ease-out;
 }
 
 .green {

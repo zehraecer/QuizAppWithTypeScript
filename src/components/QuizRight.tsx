@@ -1,18 +1,23 @@
 // import { useEffect } from "react"
-import { useContext, useEffect, useRef, useState } from "react";
-import { MyContext, Quiz, TypeCategory } from "../App";
+import { useContext, useEffect, useState } from "react";
+import { MyContext, Quiz } from "../App";
 import quizes from "../data/data.json"
 
 export const QuizRight = () => {
     const context = useContext(MyContext);
     const [border, setborder] = useState<string>("border")
+    const [borderRed, setborderRed] = useState<boolean>(false)
+    const [borderGreen, setborderGreen] = useState<boolean>(false)
+    const [yesil, setyesil] = useState<string>("")
+    const [kirmizi, setkirmizi] = useState<string>("")
+
     if (!context) {
         throw new Error("Hata: `MyContext` değeri `undefined` oldu. Bu bileşen yalnızca `MyContext.Provider` içinde kullanılabilir.");
     }
-    const { data, setData, clickedTitle, setClickedTitle, isCategory, setIsCategory, questionsCategory, setQuestionsCategory, questionOrder, setQuestionOrder, clickedOption, setClickedOption, isSubmit, setIsSubmit } = context;
-
-
-
+    const { data, setData, clickedTitle, setClickedTitle,
+        isCategory, setIsCategory, questionsCategory, setQuestionsCategory,
+        questionOrder, setQuestionOrder, clickedOption,
+        setClickedOption, isSubmit, setIsSubmit } = context;
 
 
     const CategoryBtns = (title: String) => {
@@ -37,18 +42,24 @@ export const QuizRight = () => {
         setClickedOption(a)
         if (a === b) {
             console.log("doğru cevap");
-            setborder("green")
+            setborderGreen(true)
 
         } else {
             console.log("yanlış cevap");
-            setborder("kirmizi")
+            setborderRed(true)
         }
     }
 
     const submitBtn = () => {
-        if (border === "kirmizi" || border === "green") {
+        if (borderRed === true) {
             setIsSubmit(false)
-            setborder("")
+            setborder("red")
+            setkirmizi("kirmizi.svg")
+            setyesil("yesil.svg")
+        } else {
+            setIsSubmit(false)
+            setborder("green")
+
         }
     }
 
@@ -77,12 +88,13 @@ export const QuizRight = () => {
 
                     {questionsCategory[questionOrder]?.options.map((a: string, index: number) => (
 
-                        <div role="button" onClick={() => clickedOptionBtns(a, questionsCategory[questionOrder]?.answer)} key={index} className={`d-flex flex-row gap-3 justify-content-start align-items-center p-3 quiz-right-div optionsDiv ${clickedOption === a ? border : ""}`}>
+                        <div role="button" onClick={() => clickedOptionBtns(a, questionsCategory[questionOrder]?.answer)} key={index} className={`d-flex flex-row gap-3 justify-content-between align-items-center p-3 quiz-right-div optionsDiv ${clickedOption === a ? border : ""}`}>
 
                             <span className="option-one">
                                 {index === 0 ? <span>A</span> : index === 1 ? <span> B</span> : index === 2 ? <span> C</span> : <span> D</span>}
                             </span>
                             <span className={`option-two `}> {a}</span>
+                            <img className="option-img" src={a === questionsCategory[questionOrder]?.answer ? yesil : kirmizi} alt="" />
                         </div>
                     ))
                     }
@@ -100,7 +112,6 @@ export const QuizRight = () => {
                 </div>
 
             }
-
 
         </div >
     )
