@@ -1,5 +1,5 @@
 // import { useEffect } from "react"
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { MyContext, Quiz } from "../App";
 import quizes from "../data/data.json"
 
@@ -10,6 +10,7 @@ export const QuizRight = () => {
     const [borderGreen, setborderGreen] = useState<boolean>(false)
     const [yesil, setyesil] = useState<string>("")
     const [kirmizi, setkirmizi] = useState<string>("")
+    const [isClickedOption, setIsClicedOption] = useState<boolean>(false)
 
     if (!context) {
         throw new Error("Hata: `MyContext` değeri `undefined` oldu. Bu bileşen yalnızca `MyContext.Provider` içinde kullanılabilir.");
@@ -51,6 +52,8 @@ export const QuizRight = () => {
     }
 
     const submitBtn = () => {
+
+
         if (borderRed === true) {
             setIsSubmit(false)
             setborder("red")
@@ -59,7 +62,15 @@ export const QuizRight = () => {
         } else {
             setIsSubmit(false)
             setborder("green")
+            setkirmizi("kirmizi.svg")
+            setyesil("yesil.svg")
 
+        }
+        if (borderGreen) {
+            setIsSubmit(false)
+            setborder("green")
+            setkirmizi("kirmizi.svg")
+            setyesil("yesil.svg")
         }
     }
 
@@ -88,7 +99,7 @@ export const QuizRight = () => {
 
                     {questionsCategory[questionOrder]?.options.map((a: string, index: number) => (
 
-                        <div role="button" onClick={() => clickedOptionBtns(a, questionsCategory[questionOrder]?.answer)} key={index} className={`d-flex flex-row gap-3 justify-content-between align-items-center p-3 quiz-right-div optionsDiv ${clickedOption === a ? border : ""}`}>
+                        <div role="button" onClick={() => clickedOptionBtns(a, questionsCategory[questionOrder]?.answer)} key={index} className={`d-flex flex-row gap-3 justify-content-between align-items-center p-3 quiz-right-div optionsDiv ${clickedOption === a ? border : ""} `}>
 
                             <span className="option-one">
                                 {index === 0 ? <span>A</span> : index === 1 ? <span> B</span> : index === 2 ? <span> C</span> : <span> D</span>}
@@ -101,9 +112,9 @@ export const QuizRight = () => {
 
                     {isSubmit ?
 
-                        <div role="button" onClick={submitBtn} className="submitAnswer">
+                        <button type="submit" role="button" onClick={submitBtn} className="submitAnswer w-100 ">
                             <span >Submit Answer</span>
-                        </div>
+                        </button>
                         :
                         <div role="button" className="submitAnswer" onClick={nextQuestionBtns}>
                             <span >Next Question</span>
