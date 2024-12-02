@@ -8,6 +8,7 @@ export const QuizRight = () => {
     const [yesil, setyesil] = useState<string>("")
     const [kirmizi, setkirmizi] = useState<string>("")
     const [optionClass, setOptionClass] = useState<string>("purple")
+    const [clickedAnswer, setClickedAnswer] = useState<boolean>(true)
 
     if (!context) {
         throw new Error("Hata: `MyContext` değeri `undefined` oldu. Bu bileşen yalnızca `MyContext.Provider` içinde kullanılabilir.");
@@ -44,29 +45,34 @@ export const QuizRight = () => {
     }
 
     const submitBtn = () => {
-
-        if (clickedOption === questionsCategory[questionOrder].answer) {
-            setOptionClass("greenBg")
-            setborder("green")
-            setkirmizi("kirmizi.svg")
-            setyesil("yesil.svg")
+        if (clickedOption) {
+            if (clickedOption === questionsCategory[questionOrder]?.answer) {
+                setOptionClass("greenBg");
+                setborder("green");
+                setkirmizi("kirmizi.svg");
+                setyesil("yesil.svg");
+            } else {
+                setOptionClass("redBg");
+                setborder("red");
+                setkirmizi("kirmizi.svg");
+                setyesil("yesil.svg");
+            }
+            setIsSubmit(false);
+            setClickedAnswer(true);
         } else {
-            setOptionClass("redBg")
-            setborder("red")
-            setkirmizi("kirmizi.svg")
-            setyesil("yesil.svg")
+            setClickedAnswer(false);
         }
-
-        setIsSubmit(false)
-    }
+    };
 
     const nextQuestionBtns = () => {
-        setQuestionOrder(questionOrder + 1)
-        setborder("bos")
-        setkirmizi("")
-        setyesil("")
-        setOptionClass("purple")
-        setIsSubmit(true)
+        setQuestionOrder(questionOrder + 1);
+        setClickedOption("");
+        setIsSubmit(true);
+        setClickedAnswer(true);
+        setborder("bos");
+        setkirmizi("");
+        setyesil("");
+        setOptionClass("purple");
 
     }
 
@@ -100,16 +106,40 @@ export const QuizRight = () => {
                     ))
                     }
 
-                    {isSubmit ?
+                    {isSubmit ? (
+                        clickedAnswer ? (
+                            <div className="d-flex flex-column submitAnswerBtn">
+                                <button
+                                    type="submit"
+                                    role="button"
+                                    onClick={submitBtn}
+                                    className="submitAnswer w-100"
+                                >
+                                    <span>Submit Answer</span>
+                                </button>
+                            </div>
+                        ) : (
 
-                        <button type="submit" role="button" onClick={submitBtn} className="submitAnswer w-100 ">
-                            <span >Submit Answer</span>
-                        </button>
-                        :
+                            <div className="d-flex flex-column submitAnswerBtn">
+                                <button
+                                    type="submit"
+                                    role="button"
+                                    onClick={submitBtn}
+                                    className="submitAnswer w-100"
+                                >
+                                    <span>Submit Answer</span>
+                                </button>
+                                <div className="d-flex justify-content-center align-items-center gap-2">
+                                    <p>X</p>
+                                    <span>Please select an answer</span>
+                                </div>
+                            </div>
+                        )
+                    ) : (
                         <div role="button" className="submitAnswer" onClick={nextQuestionBtns}>
-                            <span >Next Question</span>
+                            <span>Next Question</span>
                         </div>
-                    }
+                    )}
                 </div>
 
             }

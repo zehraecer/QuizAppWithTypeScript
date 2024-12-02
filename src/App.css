@@ -205,3 +205,25 @@ span {
   -o-transition: border 200ms ease-out;
   transition: border 200ms ease-out;
 }
+
+.submitAnswerBtn {
+
+  div {
+    margin-top: 20px;
+
+    p {
+      text-align: center;
+      padding: 2px 5px;
+      border: 2px solid red;
+      border-radius: 50%;
+      color: #EE5454;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    span {
+      color: #EE5454;
+      text-align: center;
+    }
+  }
+}
