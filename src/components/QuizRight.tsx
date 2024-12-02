@@ -39,43 +39,36 @@ export const QuizRight = () => {
 
     }, [isCategory])
 
+
+
     const clickedOptionBtns = (a: string, b: string) => {
         setClickedOption(a)
-        if (a === b) {
-            console.log("doğru cevap");
-            setborderGreen(true)
 
-        } else {
-            console.log("yanlış cevap");
-            setborderRed(true)
-        }
     }
 
     const submitBtn = () => {
 
 
-        if (borderRed === true) {
-            setIsSubmit(false)
-            setborder("red")
+        if (clickedOption === questionsCategory[questionOrder].answer) {
+            console.log("oldu");
+            setborder("green")
             setkirmizi("kirmizi.svg")
             setyesil("yesil.svg")
         } else {
-            setIsSubmit(false)
-            setborder("green")
+            setborder("red")
             setkirmizi("kirmizi.svg")
             setyesil("yesil.svg")
+        }
 
-        }
-        if (borderGreen) {
-            setIsSubmit(false)
-            setborder("green")
-            setkirmizi("kirmizi.svg")
-            setyesil("yesil.svg")
-        }
+        setIsSubmit(false)
     }
 
     const nextQuestionBtns = () => {
+
         setQuestionOrder(questionOrder + 1)
+        setborder("bos")
+        setkirmizi("")
+        setyesil("")
         setIsSubmit(true)
 
     }

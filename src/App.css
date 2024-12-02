@@ -154,6 +154,12 @@ span {
   }
 }
 
+
+.bos {
+
+  border: 2px solid rgb(176, 171, 171);
+}
+
 .red {
   border: 3px solid var(--Red, #EE5454);
   -webkit-transition: border 200ms ease-out;
