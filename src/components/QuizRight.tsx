@@ -1,21 +1,18 @@
-// import { useEffect } from "react"
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MyContext, Quiz } from "../App";
 import quizes from "../data/data.json"
 
 export const QuizRight = () => {
     const context = useContext(MyContext);
     const [border, setborder] = useState<string>("border")
-    const [borderRed, setborderRed] = useState<boolean>(false)
-    const [borderGreen, setborderGreen] = useState<boolean>(false)
     const [yesil, setyesil] = useState<string>("")
     const [kirmizi, setkirmizi] = useState<string>("")
-    const [isClickedOption, setIsClicedOption] = useState<boolean>(false)
+    const [optionClass, setOptionClass] = useState<string>("purple")
 
     if (!context) {
         throw new Error("Hata: `MyContext` değeri `undefined` oldu. Bu bileşen yalnızca `MyContext.Provider` içinde kullanılabilir.");
     }
-    const { data, setData, clickedTitle, setClickedTitle,
+    const { data,
         isCategory, setIsCategory, questionsCategory, setQuestionsCategory,
         questionOrder, setQuestionOrder, clickedOption,
         setClickedOption, isSubmit, setIsSubmit } = context;
@@ -41,20 +38,20 @@ export const QuizRight = () => {
 
 
 
-    const clickedOptionBtns = (a: string, b: string) => {
+    const clickedOptionBtns = (a: string) => {
         setClickedOption(a)
 
     }
 
     const submitBtn = () => {
 
-
         if (clickedOption === questionsCategory[questionOrder].answer) {
-            console.log("oldu");
+            setOptionClass("greenBg")
             setborder("green")
             setkirmizi("kirmizi.svg")
             setyesil("yesil.svg")
         } else {
+            setOptionClass("redBg")
             setborder("red")
             setkirmizi("kirmizi.svg")
             setyesil("yesil.svg")
@@ -64,18 +61,18 @@ export const QuizRight = () => {
     }
 
     const nextQuestionBtns = () => {
-
         setQuestionOrder(questionOrder + 1)
         setborder("bos")
         setkirmizi("")
         setyesil("")
+        setOptionClass("purple")
         setIsSubmit(true)
 
     }
 
     useEffect(() => {
 
-    }, [clickedOption])
+    }, [clickedOption, optionClass])
 
     return (
         <div className="quiz-right">
@@ -92,10 +89,10 @@ export const QuizRight = () => {
 
                     {questionsCategory[questionOrder]?.options.map((a: string, index: number) => (
 
-                        <div role="button" onClick={() => clickedOptionBtns(a, questionsCategory[questionOrder]?.answer)} key={index} className={`d-flex flex-row gap-3 justify-content-between align-items-center p-3 quiz-right-div optionsDiv ${clickedOption === a ? border : ""} `}>
+                        <div role="button" onClick={() => clickedOptionBtns(a)} key={index} className={`d-flex flex-row gap-3 justify-content-between align-items-center p-3 quiz-right-div optionsDiv ${clickedOption === a ? border : ""} `}>
 
-                            <span className="option-one">
-                                {index === 0 ? <span>A</span> : index === 1 ? <span> B</span> : index === 2 ? <span> C</span> : <span> D</span>}
+                            <span className={`option-one ${clickedOption === a ? optionClass : ""}`}>
+                                {index === 0 ? <span >A</span> : index === 1 ? <span> B</span> : index === 2 ? <span> C</span> : <span> D</span>}
                             </span>
                             <span className={`option-two `}> {a}</span>
                             <img className="option-img" src={a === questionsCategory[questionOrder]?.answer ? yesil : kirmizi} alt="" />

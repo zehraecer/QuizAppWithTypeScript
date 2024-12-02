@@ -8,7 +8,7 @@ export const QuizLeft = () => {
     if (!context) {
         throw new Error("Hata: `MyContext` değeri `undefined` oldu. Bu bileşen yalnızca `MyContext.Provider` içinde kullanılabilir.");
     }
-    const { isCategory, setIsCategory, questionsCategory, setQuestionsCategory, questionOrder, setQuestionOrder, } = context
+    const { isCategory, questionsCategory, questionOrder } = context
 
     return (
         <>

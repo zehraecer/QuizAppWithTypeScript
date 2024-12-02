@@ -116,6 +116,31 @@ span {
 
 }
 
+.purple {
+  background-color: #A729F5;
+
+  span {
+    color: #fff;
+
+  }
+}
+
+.greenBg {
+  background-color: #26D782;
+
+  span {
+    color: #fff;
+  }
+}
+
+.redBg {
+  background-color: #EE5454;
+
+  span {
+    color: #fff;
+  }
+}
+
 .optionBground {
 
   border: 3px solid #A729F5 !important;
@@ -155,10 +180,15 @@ span {
 }
 
 
-.bos {
+.border {
+  border: 2px solid #A729F5 !important;
 
-  border: 2px solid rgb(176, 171, 171);
 }
+
+.bos {
+  border: 2px solid #A729F5;
+}
+
 
 .red {
   border: 3px solid var(--Red, #EE5454);
