@@ -9,6 +9,8 @@ export const QuizRight = () => {
     const [kirmizi, setkirmizi] = useState<string>("")
     const [optionClass, setOptionClass] = useState<string>("purple")
     const [clickedAnswer, setClickedAnswer] = useState<boolean>(true)
+    const [correctNumber, setCorrectNumber] = useState<number>(0)
+    const [questionsLength, setQuestionsLength] = useState<boolean>(true)
 
     if (!context) {
         throw new Error("Hata: `MyContext` değeri `undefined` oldu. Bu bileşen yalnızca `MyContext.Provider` içinde kullanılabilir.");
@@ -41,16 +43,20 @@ export const QuizRight = () => {
 
     const clickedOptionBtns = (a: string) => {
         setClickedOption(a)
-
     }
 
     const submitBtn = () => {
         if (clickedOption) {
             if (clickedOption === questionsCategory[questionOrder]?.answer) {
+
                 setOptionClass("greenBg");
                 setborder("green");
                 setkirmizi("kirmizi.svg");
                 setyesil("yesil.svg");
+                if (correctNumber <= questionsCategory.length) {
+                    setCorrectNumber(correctNumber + 1)
+                }
+
             } else {
                 setOptionClass("redBg");
                 setborder("red");
@@ -63,6 +69,24 @@ export const QuizRight = () => {
             setClickedAnswer(false);
         }
     };
+    console.log(questionsCategory.length);
+    console.log(correctNumber);
+
+    const PlayAgain = () => {
+        setIsCategory(!isCategory)
+        setQuestionsCategory([])
+        setQuestionOrder(0);
+        setClickedOption("");
+        setIsSubmit(true);
+        setQuestionsLength(true);
+        setCorrectNumber(0);
+        setborder("border");
+        setkirmizi("");
+        setyesil("");
+        setOptionClass("purple");
+        setClickedAnswer(true);
+
+    }
 
     const nextQuestionBtns = () => {
         setQuestionOrder(questionOrder + 1);
@@ -73,77 +97,123 @@ export const QuizRight = () => {
         setkirmizi("");
         setyesil("");
         setOptionClass("purple");
+        if ((questionsCategory.length - 1 === questionOrder)) {
+            setQuestionsLength(false)
+        }
 
     }
 
     useEffect(() => {
 
-    }, [clickedOption, optionClass])
+    }, [clickedOption, optionClass, correctNumber])
+
+    useEffect(() => {
+
+        // if ((questionsCategory.length - questionOrder === 1)) {
+        //     setQuestionsLength(false)
+        // }
+    }, [questionsLength, isCategory])
 
     return (
-        <div className="quiz-right">
-            {isCategory ?
 
-                data.map((e: Quiz, index: number) => (
-                    <div role="button" key={index} className="d-flex flex-row gap-3 justify-content-start align-items-center p-3 quiz-right-div" onClick={() => CategoryBtns(e.title)}>
-                        <img src={e.icon} alt="" />
-                        <p>{e.title}</p>
-                    </div>
-                ))
-                :
-                <div className="">
+        <>
+            <div className="quiz-right">
+                {isCategory ?
 
-                    {questionsCategory[questionOrder]?.options.map((a: string, index: number) => (
-
-                        <div role="button" onClick={() => clickedOptionBtns(a)} key={index} className={`d-flex flex-row gap-3 justify-content-between align-items-center p-3 quiz-right-div optionsDiv ${clickedOption === a ? border : ""} `}>
-
-                            <span className={`option-one ${clickedOption === a ? optionClass : ""}`}>
-                                {index === 0 ? <span >A</span> : index === 1 ? <span> B</span> : index === 2 ? <span> C</span> : <span> D</span>}
-                            </span>
-                            <span className={`option-two `}> {a}</span>
-                            <img className="option-img" src={a === questionsCategory[questionOrder]?.answer ? yesil : kirmizi} alt="" />
+                    data.map((e: Quiz, index: number) => (
+                        <div role="button" key={index} className="d-flex flex-row gap-3 justify-content-start align-items-center p-3 quiz-right-div" onClick={() => CategoryBtns(e.title)}>
+                            <img src={e.icon} alt="" />
+                            <p>{e.title}</p>
                         </div>
                     ))
-                    }
+                    :
 
-                    {isSubmit ? (
-                        clickedAnswer ? (
-                            <div className="d-flex flex-column submitAnswerBtn">
-                                <button
-                                    type="submit"
-                                    role="button"
-                                    onClick={submitBtn}
-                                    className="submitAnswer w-100"
-                                >
-                                    <span>Submit Answer</span>
-                                </button>
-                            </div>
-                        ) : (
+                    <div className="">
 
-                            <div className="d-flex flex-column submitAnswerBtn">
-                                <button
-                                    type="submit"
-                                    role="button"
-                                    onClick={submitBtn}
-                                    className="submitAnswer w-100"
-                                >
-                                    <span>Submit Answer</span>
-                                </button>
-                                <div className="d-flex justify-content-center align-items-center gap-2">
-                                    <p>X</p>
-                                    <span>Please select an answer</span>
+                        {questionsLength ? (
+
+                            questionsCategory[questionOrder]?.options.map((a: string, index: number) => (
+
+                                <div role="button" onClick={() => clickedOptionBtns(a)} key={index} className={`d-flex flex-row gap-3 justify-content-between align-items-center p-3 quiz-right-div optionsDiv ${clickedOption === a ? border : ""} `}>
+
+                                    <span className={`option-one ${clickedOption === a ? optionClass : ""}`}>
+                                        {index === 0 ? <span >A</span> : index === 1 ? <span> B</span> : index === 2 ? <span> C</span> : <span> D</span>}
+                                    </span>
+                                    <span className={`option-two `}> {a}</span>
+                                    <img className="option-img" src={a === questionsCategory[questionOrder]?.answer ? yesil : kirmizi} alt="" />
                                 </div>
-                            </div>
+                            ))
+
                         )
-                    ) : (
-                        <div role="button" className="submitAnswer" onClick={nextQuestionBtns}>
-                            <span>Next Question</span>
-                        </div>
-                    )}
-                </div>
+                            :
 
-            }
+                            <div className="d-flex flex-column  justify-content-center align-items-center quiz-right-div quiz-right-div-two">
+                                <div className="d-flex justify-content-center align-items-center gap-3">
+                                    <img src="html-icon.svg" alt="" />
+                                    <span>HTML</span>
+                                </div>
 
-        </div >
+                                <p>{correctNumber}</p>
+                                <h6>out of {questionsCategory.length}</h6>
+
+                            </div>
+
+                        }
+
+                        {questionsLength ?
+                            (
+                                isSubmit ? (
+                                    clickedAnswer ? (
+                                        <div className="d-flex flex-column submitAnswerBtn">
+                                            <button
+                                                type="submit"
+                                                role="button"
+                                                onClick={submitBtn}
+                                                className="submitAnswer w-100"
+                                            >
+                                                <span>Submit Answer</span>
+                                            </button>
+                                        </div>
+                                    ) : (
+
+                                        <div className="d-flex flex-column submitAnswerBtn">
+                                            <button
+                                                type="submit"
+                                                role="button"
+                                                onClick={submitBtn}
+                                                className="submitAnswer w-100"
+                                            >
+                                                <span>Submit Answer</span>
+                                            </button>
+                                            <div className="d-flex justify-content-center align-items-center gap-2">
+                                                <p>X</p>
+                                                <span>Please select an answer</span>
+                                            </div>
+                                        </div>
+                                    )
+                                ) : (
+                                    <div role="button" className="submitAnswer" onClick={nextQuestionBtns}>
+                                        <span>Next Question</span>
+                                    </div>
+                                )
+                            )
+                            :
+                            (
+                                <div role="button" className="submitAnswer" onClick={PlayAgain}>
+                                    <span>
+                                        Play Again
+                                    </span>
+                                </div>
+                            )
+                        }
+
+
+                    </div>
+
+                }
+
+            </div >
+        </>
+
     )
 }
