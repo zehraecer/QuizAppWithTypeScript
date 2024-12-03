@@ -10,7 +10,6 @@ export const QuizRight = () => {
     const [optionClass, setOptionClass] = useState<string>("purple")
     const [clickedAnswer, setClickedAnswer] = useState<boolean>(true)
     const [correctNumber, setCorrectNumber] = useState<number>(0)
-    const [questionsLength, setQuestionsLength] = useState<boolean>(true)
 
     if (!context) {
         throw new Error("Hata: `MyContext` değeri `undefined` oldu. Bu bileşen yalnızca `MyContext.Provider` içinde kullanılabilir.");
@@ -18,18 +17,20 @@ export const QuizRight = () => {
     const { data,
         isCategory, setIsCategory, questionsCategory, setQuestionsCategory,
         questionOrder, setQuestionOrder, clickedOption,
-        setClickedOption, isSubmit, setIsSubmit } = context;
+        setClickedOption, isSubmit, setIsSubmit, questionsLength, setQuestionsLength, headerIcon, setHeaderIcon } = context;
+
+    const titleIcon = data.find(e => e.title === headerIcon)
+    console.log(titleIcon);
 
 
-    const CategoryBtns = (title: String) => {
+    const CategoryBtns = (title: string) => {
+        setHeaderIcon(title)
         setIsCategory(!isCategory)
         if (isCategory) {
             const Questions = quizes.quizzes
             const categoryQuestions = Questions.find(question => question.title === title)
             if (categoryQuestions && categoryQuestions.questions) {
                 const z = categoryQuestions.questions;
-                console.log(z[0].options);
-
                 setQuestionsCategory(z);
             }
         }
@@ -38,8 +39,6 @@ export const QuizRight = () => {
     useEffect(() => {
 
     }, [isCategory])
-
-
 
     const clickedOptionBtns = (a: string) => {
         setClickedOption(a)
@@ -69,8 +68,8 @@ export const QuizRight = () => {
             setClickedAnswer(false);
         }
     };
-    console.log(questionsCategory.length);
-    console.log(correctNumber);
+    console.log(data);
+    console.log(questionsCategory);
 
     const PlayAgain = () => {
         setIsCategory(!isCategory)
@@ -121,7 +120,7 @@ export const QuizRight = () => {
                 {isCategory ?
 
                     data.map((e: Quiz, index: number) => (
-                        <div role="button" key={index} className="d-flex flex-row gap-3 justify-content-start align-items-center p-3 quiz-right-div" onClick={() => CategoryBtns(e.title)}>
+                        <div role="button" key={index} className={`d-flex flex-row gap-3 justify-content-start align-items-center p-3 quiz-right-div ${e.title}`} onClick={() => CategoryBtns(e.title)}>
                             <img src={e.icon} alt="" />
                             <p>{e.title}</p>
                         </div>
@@ -149,8 +148,8 @@ export const QuizRight = () => {
 
                             <div className="d-flex flex-column  justify-content-center align-items-center quiz-right-div quiz-right-div-two">
                                 <div className="d-flex justify-content-center align-items-center gap-3">
-                                    <img src="html-icon.svg" alt="" />
-                                    <span>HTML</span>
+                                    <img src={titleIcon?.icon} alt="" />
+                                    <span>{titleIcon?.title}</span>
                                 </div>
 
                                 <p>{correctNumber}</p>

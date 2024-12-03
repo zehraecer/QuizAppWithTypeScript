@@ -24,6 +24,10 @@ export interface State {
   setClickedOption: React.Dispatch<React.SetStateAction<string>>
   isSubmit: boolean;
   setIsSubmit: React.Dispatch<React.SetStateAction<boolean>>
+  questionsLength: boolean
+  setQuestionsLength: React.Dispatch<React.SetStateAction<boolean>>
+  headerIcon: string
+  setHeaderIcon: React.Dispatch<React.SetStateAction<string>>
 
 }
 
@@ -53,6 +57,9 @@ function App() {
   const [questionOrder, setQuestionOrder] = useState<number>(0)
   const [clickedOption, setClickedOption] = useState<string>("")
   const [isSubmit, setIsSubmit] = useState<boolean>(true)
+  const [questionsLength, setQuestionsLength] = useState<boolean>(true)
+  const [headerIcon, setHeaderIcon] = useState<string>("")
+
 
 
   return (
@@ -60,7 +67,8 @@ function App() {
       data, setData, clickedTitle,
       setClickedTitle, isCategory, setIsCategory, questionsCategory,
       setQuestionsCategory, questionOrder, setQuestionOrder,
-      clickedOption, setClickedOption, isSubmit, setIsSubmit
+      clickedOption, setClickedOption, isSubmit, setIsSubmit, questionsLength,
+      setQuestionsLength, headerIcon, setHeaderIcon
     }}>
 
       <div className="">
