@@ -65,6 +65,16 @@ span {
 
 }
 
+
+.header-span {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 28px;
+  text-align: left;
+  color: #313E51;
+
+}
+
 /* .quiz-right {} */
 
 .quiz-right-div {

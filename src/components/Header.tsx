@@ -17,9 +17,9 @@ export const Header = () => {
 
         <div className="d-flex justify-content-between">
             {titleIcon ? (
-                <div className={`d-flex justify-content-center align-items-center gap-2  ${titleIcon.title}`} >
+                <div className={`d-flex justify-content-center align-items-center gap-3  ${titleIcon.title}`} >
                     <img src={titleIcon.icon} />
-                    <span>{titleIcon.title}</span>
+                    <span className="header-span">{titleIcon.title}</span>
                 </div>
             ) : (
                 ""
