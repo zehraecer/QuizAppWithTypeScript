@@ -325,59 +325,45 @@ span {
   margin-top: 164px;
 }
 
-input[type='range'] {
-  width: 465px;
-  -webkit-appearance: none;
+input[type="range"] {
+  width: 100%;
   appearance: none;
+  height: 10px;
   background: white;
-  /* Arka plan beyaz */
-  border-radius: 999px;
-  height: 8px;
+  border-radius: 5px;
   outline: none;
-  cursor: pointer;
-  position: relative;
-}
-
-/* Arka plan dolum efekti için */
-input[type='range']::-webkit-slider-runnable-track {
-  background: linear-gradient(to right, #A729F5 var(--value, 50%), white 0%);
-  height: 8px;
-  border-radius: 999px;
-}
-
-/* Thumb için stil */
-input[type='range'] {
-  width: 465px;
-  height: 8px;
-  -webkit-appearance: none;
-  appearance: none;
-  background: white;
-  /* Arka plan beyaz */
-  border-radius: 999px;
-  outline: none;
-  cursor: pointer;
-  position: relative;
   overflow: hidden;
-  margin-bottom: 20px;
+  position: relative;
 }
 
-/* Yuvarlak kısmı gizle */
-input[type='range']::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  display: none;
-  background-color: #A729F5;
-  /* Thumb kaldırıldı */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  /* background: #000; */
+  /* Thumb rengi */
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
 }
 
-input[type='range']::-moz-range-thumb {
-  display: none;
-  /* Thumb kaldırıldı */
+input[type="range"]::-moz-range-track,
+input[type="range"]::-ms-track {
+  background: transparent;
 }
 
-/* Track için dolum efekti */
-input[type='range']::-webkit-slider-runnable-track {
-  background: white;
-  height: 8px;
-  border-radius: 999px;
+input[type="range"]::-moz-range-thumb,
+input[type="range"]::-ms-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #000;
+  cursor: pointer;
+  z-index: 2;
 }

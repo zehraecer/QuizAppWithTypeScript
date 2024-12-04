@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect, useRef } from "react"
 import { MyContext } from "../App"
 
 export const QuizLeft = () => {
@@ -9,6 +9,16 @@ export const QuizLeft = () => {
         throw new Error("Hata: `MyContext` değeri `undefined` oldu. Bu bileşen yalnızca `MyContext.Provider` içinde kullanılabilir.");
     }
     const { isCategory, questionsCategory, questionOrder, questionsLength } = context
+    const rangeInputRef = useRef<HTMLInputElement>(null);
+
+
+    useEffect(() => {
+        if (rangeInputRef.current) {
+            const progressPercentage = ((questionOrder + 1) / questionsCategory.length) * 100;
+            rangeInputRef.current.style.background = `linear-gradient(to right, #A729F5 ${progressPercentage}%, white ${progressPercentage}%)`;
+        }
+    }, [questionOrder, questionsCategory.length]);
+
 
     return (
         <>
@@ -32,6 +42,7 @@ export const QuizLeft = () => {
                                 </div>
                                 <div className="radioDiv">
                                     <input
+                                        ref={rangeInputRef}
                                         type="range"
                                         id="volume"
                                         name="volume"
@@ -39,9 +50,6 @@ export const QuizLeft = () => {
                                         max={questionsCategory.length}
                                         value={questionOrder + 1}
                                         readOnly
-                                        style={{
-                                            background: `linear-gradient(to right, #A729F5 ${(questionOrder / (questionsCategory.length - 1)) * 100}%, white ${(questionOrder / (questionsCategory.length - 1)) * 100}%)`,
-                                        }}
                                     />
 
                                 </div>
