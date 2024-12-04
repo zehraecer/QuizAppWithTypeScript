@@ -173,6 +173,15 @@ span {
 
 }
 
+
+.zehra {
+  padding: 1px 20px;
+
+  span {
+    background-color: #A729F5;
+  }
+}
+
 .optionsDiv {
   gap: 10px;
   padding: 18px;
@@ -309,4 +318,66 @@ span {
       text-align: center;
     }
   }
+}
+
+.radioDiv {
+
+  margin-top: 164px;
+}
+
+input[type='range'] {
+  width: 465px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: white;
+  /* Arka plan beyaz */
+  border-radius: 999px;
+  height: 8px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Arka plan dolum efekti için */
+input[type='range']::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, #A729F5 var(--value, 50%), white 0%);
+  height: 8px;
+  border-radius: 999px;
+}
+
+/* Thumb için stil */
+input[type='range'] {
+  width: 465px;
+  height: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: white;
+  /* Arka plan beyaz */
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+/* Yuvarlak kısmı gizle */
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+  background-color: #A729F5;
+  /* Thumb kaldırıldı */
+}
+
+input[type='range']::-moz-range-thumb {
+  display: none;
+  /* Thumb kaldırıldı */
+}
+
+/* Track için dolum efekti */
+input[type='range']::-webkit-slider-runnable-track {
+  background: white;
+  height: 8px;
+  border-radius: 999px;
 }

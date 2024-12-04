@@ -30,7 +30,21 @@ export const QuizLeft = () => {
                                     < span className="quiz-left-span3" >Questions {questionOrder + 1} of {questionsCategory.length}</span >
                                     <span className="quiz-left-span2 quiz-left-span2-quiz">{questionsCategory[questionOrder]?.question} </span>
                                 </div>
+                                <div className="radioDiv">
+                                    <input
+                                        type="range"
+                                        id="volume"
+                                        name="volume"
+                                        min="1"
+                                        max={questionsCategory.length}
+                                        value={questionOrder + 1}
+                                        readOnly
+                                        style={{
+                                            background: `linear-gradient(to right, #A729F5 ${(questionOrder / (questionsCategory.length - 1)) * 100}%, white ${(questionOrder / (questionsCategory.length - 1)) * 100}%)`,
+                                        }}
+                                    />
 
+                                </div>
                             </div >
                     )
                     :
