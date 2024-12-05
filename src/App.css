@@ -289,7 +289,7 @@ span {
 
 
 .red {
-  border: 3px solid var(--Red, #EE5454);
+  border: 2px solid var(--Red, #EE5454);
   -webkit-transition: border 200ms ease-out;
   -moz-transition: border 200ms ease-out;
   -o-transition: border 200ms ease-out;
@@ -297,7 +297,7 @@ span {
 }
 
 .green {
-  border: 3px solid var(--Green, #26D782);
+  border: 2px solid var(--Green, #26D782);
   -webkit-transition: border 200ms ease-out;
   -moz-transition: border 200ms ease-out;
   -o-transition: border 200ms ease-out;
