@@ -19,7 +19,6 @@ export const QuizLeft = () => {
         }
     }, [questionOrder, questionsCategory.length]);
 
-
     return (
         <>
             {
@@ -34,7 +33,6 @@ export const QuizLeft = () => {
 
                             </div >
                             :
-
                             <div className="d-flex flex-column justify-content-between quiz-left-div">
                                 <div className="d-flex flex-column quiz-left" style={{ flexGrow: 2, overflow: "auto" }}>
                                     <span className="quiz-left-span3">
@@ -67,9 +65,6 @@ export const QuizLeft = () => {
                         </div>
                     )
             }
-
-
-
         </>
     )
 }

@@ -20,8 +20,6 @@ export const QuizRight = () => {
         setClickedOption, isSubmit, setIsSubmit, questionsLength, setQuestionsLength, headerIcon, setHeaderIcon } = context;
 
     const titleIcon = data.find(e => e.title === headerIcon)
-    console.log(titleIcon);
-
 
     const CategoryBtns = (title: string) => {
         setHeaderIcon(title)
@@ -47,7 +45,6 @@ export const QuizRight = () => {
     const submitBtn = () => {
         if (clickedOption) {
             if (clickedOption === questionsCategory[questionOrder]?.answer) {
-
                 setOptionClass("greenBg");
                 setborder("green");
                 setkirmizi("kirmizi.svg");
@@ -68,8 +65,6 @@ export const QuizRight = () => {
             setClickedAnswer(false);
         }
     };
-    console.log(data);
-    console.log(questionsCategory);
 
     const PlayAgain = () => {
         setIsCategory(!isCategory)
@@ -108,13 +103,9 @@ export const QuizRight = () => {
 
     useEffect(() => {
 
-        // if ((questionsCategory.length - questionOrder === 1)) {
-        //     setQuestionsLength(false)
-        // }
     }, [questionsLength, isCategory])
 
     return (
-
         <>
             <div className="quiz-right">
                 {isCategory ?
@@ -126,7 +117,6 @@ export const QuizRight = () => {
                         </div>
                     ))
                     :
-
                     <div className="">
 
                         {questionsLength ? (
@@ -159,7 +149,6 @@ export const QuizRight = () => {
                             </div>
 
                         }
-
                         {questionsLength ?
                             (
                                 isSubmit ? (
@@ -206,14 +195,9 @@ export const QuizRight = () => {
                                 </div>
                             )
                         }
-
-
                     </div>
-
                 }
-
             </div >
         </>
-
     )
 }

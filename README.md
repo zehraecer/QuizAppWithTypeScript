@@ -7,44 +7,43 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+# QuizAppWithTypeScript
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Bu proje, React ve TypeScript kullanarak yapılan bir quiz uygulamasıdır. Kullanıcılar, soruları yanıtlayarak quizi tamamlayabilir ve sonuçlarını görüntüleyebilirler.
 
-- Configure the top-level `parserOptions` property like this:
+## Proje Kurulumu
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Projeyi çalıştırmak için aşağıdaki adımları takip edebilirsiniz.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 1. Projeyi Klonlayın
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Öncelikle projeyi GitHub'dan bilgisayarınıza klonlayın:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+```bash
+git clone https://github.com/zehraecer/QuizAppWithTypeScript.git
+
+
+## Kullanılan Teknolojiler
+
+- **React**: Kullanıcı arayüzünü oluşturmak için React kullanılmıştır.
+- **TypeScript**: Tip güvenliğini sağlamak ve daha güvenilir bir geliştirme süreci için TypeScript kullanılmıştır.
+- **Vite**: Hızlı geliştirme ve hızlı yenileme sağlamak için Vite yapılandırması yapılmıştır.
+- **CSS**: Uygulamanın stilini oluşturmak için basit CSS kullanılmıştır.
+
+
+## Proje Yapısı
+
+- **src/**: Tüm uygulama dosyalarının bulunduğu ana klasör.
+- **components/**: React bileşenlerini içeren klasör.
+- **data/**: Quiz soruları ve kategorilerin bulunduğu JSON verisini içeren dosya.
+- **App.tsx**: Uygulamanın ana bileşeni.
+- **index.tsx**: Uygulamanın başlangıç noktası.
+- **styles/**: CSS dosyaları.
+
+## Uygulama Özellikleri
+
+- **Kategori Seçimi**: Kullanıcılar, çeşitli kategorilerden birini seçerek soruları başlatabilirler.
+- **Sorular ve Cevaplar**: Her kategoriye ait sorular ve çoktan seçmeli cevaplar bulunmaktadır.
+- **Yanıtlar ve Puanlama**: Kullanıcıların seçtikleri cevaplar doğrultusunda doğru/yanlış puanlama yapılır ve sonuçlar gösterilir.
+- **Oyun Sonucu**: Kullanıcılar tüm soruları yanıtladıktan sonra başarı oranlarını ve doğru cevap sayılarını görebilirler.
+- **Tekrar Başlatma**: Kullanıcılar, oyunu baştan başlatabilirler.

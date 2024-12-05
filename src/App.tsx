@@ -6,9 +6,6 @@ import { Header } from "./components/Header.js"
 import { createContext, useState } from "react"
 import quizzes from "./data/data.json"
 
-
-
-
 export interface State {
   data: Quiz[];
   setData: React.Dispatch<React.SetStateAction<Quiz[]>>;
@@ -35,11 +32,9 @@ export interface Quiz {
   title: string;
   icon: string;
   questions: any[]
-
 }
 
 export interface TypeCategory {
-
   question: string;
   options: string[];
   answer: string
@@ -48,8 +43,8 @@ export interface TypeCategory {
 export const MyContext = createContext<State | undefined>(undefined)
 
 function App() {
-  const QuizData: Quiz[] = quizzes.quizzes
 
+  const QuizData: Quiz[] = quizzes.quizzes
   const [data, setData] = useState<Quiz[]>(QuizData)
   const [isCategory, setIsCategory] = useState<boolean>(true)
   const [clickedTitle, setClickedTitle] = useState<boolean>(false)
@@ -59,8 +54,6 @@ function App() {
   const [isSubmit, setIsSubmit] = useState<boolean>(true)
   const [questionsLength, setQuestionsLength] = useState<boolean>(true)
   const [headerIcon, setHeaderIcon] = useState<string>("")
-
-
 
   return (
     <MyContext.Provider value={{
