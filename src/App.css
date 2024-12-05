@@ -22,6 +22,8 @@ span {
 
   font-family: Rubik;
   font-weight: 300;
+  margin: 0%;
+  padding: 0;
 
 }
 
@@ -348,6 +350,12 @@ span {
   /* İç boşlukları kaldırır */
 }
 
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  .option-img {
+    border: none;
+    outline: none;
+  }
+}
 
 input[type="range"] {
   width: 100%;
