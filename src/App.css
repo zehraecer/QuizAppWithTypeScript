@@ -424,7 +424,7 @@ input[type="range"]::-ms-thumb {
 }
 
 
-@media (width <=768px) {
+@media (width :768px) {
   .quiz-right {
 
     margin-top: 24px !important;
