@@ -1,7 +1,7 @@
 #root {
   max-width: 1160px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
 }
 
@@ -160,7 +160,7 @@ span {
   margin-top: 27px;
   font-size: 36px;
   font-weight: 500;
-  line-height: 43.2px;
+  line-height: 33.2px;
   text-align: left;
 
 
@@ -404,8 +404,21 @@ input[type="range"]::-ms-thumb {
   }
 
   .quiz-left-div {
-    height: 250px;
+    height: 200px;
     position: relative;
   }
 
+  .quiz-left-span3 {
+    margin-top: 0;
+  }
+
+  .quiz-left-span2-quiz {
+    font-size: 20px;
+    line-height: 29.2px;
+
+  }
+
+  .quiz-wrapper {
+    margin-top: 15px;
+  }
 }
