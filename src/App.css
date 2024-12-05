@@ -332,6 +332,23 @@ span {
   padding-inline: 10px 40px;
 }
 
+.option-img {
+  border: none;
+  /* Kenarlığı kaldırır */
+  outline: none;
+  /* Varsa outline'ı kaldırır */
+  display: block;
+  /* Tarayıcının görüntüleme sorunlarını düzeltir */
+}
+
+.option-img {
+  margin: 0;
+  /* Dış boşlukları kaldırır */
+  padding: 0;
+  /* İç boşlukları kaldırır */
+}
+
+
 input[type="range"] {
   width: 100%;
   appearance: none;
