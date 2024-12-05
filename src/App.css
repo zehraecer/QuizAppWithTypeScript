@@ -331,18 +331,13 @@ span {
 
 .option-img {
   border: none;
-  /* Kenarlığı kaldırır */
   outline: none;
-  /* Varsa outline'ı kaldırır */
-  display: block;
-  /* Tarayıcının görüntüleme sorunlarını düzeltir */
+  display: none;
 }
 
 .option-img {
   margin: 0;
-  /* Dış boşlukları kaldırır */
   padding: 0;
-  /* İç boşlukları kaldırır */
 }
 
 .option-img {
