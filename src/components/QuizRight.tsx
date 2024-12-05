@@ -140,12 +140,12 @@ export const QuizRight = () => {
                                     </span>
                                     <span className={`option-two `}> {a}</span>
                                     <img
-                                        className={`option-img ${a === questionsCategory[questionOrder]?.answer ? "option-img-visible" : ""}`}
+                                        className={`option-img ${a === questionsCategory[questionOrder]?.answer ? "option-img-visible" : "option-img"}`}
                                         src={yesil}
                                     />
 
                                     <img
-                                        className={`option-img ${a !== questionsCategory[questionOrder]?.answer ? "option-img-visible" : ""}`}
+                                        className={`option-img ${a !== questionsCategory[questionOrder]?.answer ? "option-img-visible" : "option-img"}`}
                                         src={kirmizi}
                                     />
                                 </div>
