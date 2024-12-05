@@ -126,11 +126,6 @@ span {
   }
 }
 
-.option-img {
-  padding: 0%;
-  background-color: transparent !important;
-
-}
 
 
 .quiz-left-div {
@@ -350,10 +345,18 @@ span {
   /* İç boşlukları kaldırır */
 }
 
+.option-img {
+  padding: 0%;
+  background-color: transparent !important;
+  border: none !important;
+
+}
+
+
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
   .option-img {
-    border: none;
-    outline: none;
+    border: none !important;
+    outline: none !important;
   }
 }
 
