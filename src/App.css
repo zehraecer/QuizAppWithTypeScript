@@ -348,16 +348,15 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  /* background: #000; */
-  /* Thumb rengi */
-  cursor: pointer;
-  position: relative;
-  z-index: 2;
+  all: unset;
+  /* Tüm stilleri kaldırır ve tarayıcının varsayılanını uygular */
+}
+
+@media only screen and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+  input[type="range"]::-webkit-slider-thumb {
+    display: none;
+    /* iPhone'da gizler */
+  }
 }
 
 input[type="range"]::-moz-range-track,
