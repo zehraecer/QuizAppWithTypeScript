@@ -340,8 +340,10 @@ span {
 }
 
 
-.option-img-none {
+.option-img-visible {
   display: block;
+  border: none !important;
+
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
