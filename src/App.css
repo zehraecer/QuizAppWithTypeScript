@@ -409,7 +409,7 @@ input[type="range"]::-ms-thumb {
   }
 
   .quiz-left-span3 {
-    margin-top: 0;
+    margin-top: 0 !important;
   }
 
   .quiz-left-span2-quiz {
