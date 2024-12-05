@@ -407,7 +407,7 @@ input[type="range"]::-ms-thumb {
 /* tablet */
 
 
-@media (width <=1280px) {
+@media (max-width :1280px) {
 
   .quiz-left-span1,
   .quiz-left-span2 {
@@ -424,7 +424,7 @@ input[type="range"]::-ms-thumb {
 }
 
 
-@media (width :768px) {
+@media (max-width: 768px) {
   .quiz-right {
 
     margin-top: 24px !important;
