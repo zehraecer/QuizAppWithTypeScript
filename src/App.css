@@ -329,24 +329,20 @@ span {
   padding-inline: 10px 40px;
 }
 
-.option-img {
-  border: none;
-  outline: none;
-  display: none;
-}
 
 .option-img {
   margin: 0;
   padding: 0;
-}
-
-.option-img {
-  padding: 0%;
-  background-color: transparent !important;
   border: none !important;
-
+  outline: none;
+  display: none;
+  background-color: transparent !important;
 }
 
+
+.option-img-none {
+  display: block;
+}
 
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
   .option-img {

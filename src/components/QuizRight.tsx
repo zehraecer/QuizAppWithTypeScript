@@ -139,7 +139,7 @@ export const QuizRight = () => {
                                         {index === 0 ? <span >A</span> : index === 1 ? <span> B</span> : index === 2 ? <span> C</span> : <span> D</span>}
                                     </span>
                                     <span className={`option-two `}> {a}</span>
-                                    <img className="option-img" src={a === questionsCategory[questionOrder]?.answer ? yesil : kirmizi} alt="" />
+                                    <img className={`${a === questionsCategory[questionOrder]?.answer ? "option-img-none" : "option-img-none"} option-img`} src={a === questionsCategory[questionOrder]?.answer ? yesil : kirmizi} alt="" />
                                 </div>
                             ))
 
