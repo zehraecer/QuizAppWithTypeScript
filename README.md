@@ -23,7 +23,7 @@ Projeyi çalıştırmak için aşağıdaki adımları takip edebilirsiniz.
 git clone https://github.com/zehraecer/QuizAppWithTypeScript.git
 
 
-## Kullanılan Teknolojiler
+### 1. Projeyi Klonlayın
 
 - **React**: Kullanıcı arayüzünü oluşturmak için React kullanılmıştır.
 - **TypeScript**: Tip güvenliğini sağlamak ve daha güvenilir bir geliştirme süreci için TypeScript kullanılmıştır.
