@@ -140,6 +140,7 @@ export const QuizRight = () => {
                                     </span>
                                     <span className={`option-two `}> {a}</span>
                                     <img className={isSubmit ? "option-img" : "option-img-visible"} src={a === questionsCategory[questionOrder]?.answer ? yesil : kirmizi} alt="" />
+                                    <div className={isSubmit ? "d-block" : "d-none"}></div>
                                 </div>
                             ))
 
@@ -184,7 +185,7 @@ export const QuizRight = () => {
                                             >
                                                 <span>Submit Answer</span>
                                             </button>
-                                            <div className="d-flex justify-content-center align-items-center gap-2">
+                                            <div className="d-flex justify-content-center align-items-center gap-2 mt-3">
                                                 <p>X</p>
                                                 <span>Please select an answer</span>
                                             </div>

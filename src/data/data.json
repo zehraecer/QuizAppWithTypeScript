@@ -209,16 +209,6 @@
                         "To create a zoom effect"
                     ],
                     "answer": "To specify the stack order of an element"
-                },
-                {
-                    "question": "What is the purpose of the z-index property in CSS?",
-                    "options": [
-                        "To count the number of elements",
-                        "To set the magnification level of an element",
-                        "To specify the stack order of an element",
-                        "To create a zoom effect"
-                    ],
-                    "answer": "To specify the stack order of an element"
                 }
             ]
         },
@@ -325,16 +315,6 @@
                         "var person = (firstName = 'John', lastName = 'Doe');"
                     ],
                     "answer": "var person = {firstName: 'John', lastName: 'Doe'};"
-                },
-                {
-                    "question": "What is the correct way to write a JavaScript object?",
-                    "options": [
-                        "var person = {firstName: 'John', lastName: 'Doe'};",
-                        "var person = {firstName = 'John', lastName = 'Doe'};",
-                        "var person = (firstName: 'John', lastName: 'Doe');",
-                        "var person = (firstName = 'John', lastName = 'Doe');"
-                    ],
-                    "answer": "var person = {firstName: 'John', lastName: 'Doe'};"
                 }
             ]
         },
@@ -431,16 +411,6 @@
                         "To bypass broken links in the navigation"
                     ],
                     "answer": "To skip over primary navigation to the main content"
-                },
-                {
-                    "question": "Which of these tools can help in checking the accessibility of a website?",
-                    "options": [
-                        "W3C Validator",
-                        "Google Lighthouse",
-                        "CSS Validator",
-                        "JavaScript Console"
-                    ],
-                    "answer": "Google Lighthouse"
                 },
                 {
                     "question": "Which of these tools can help in checking the accessibility of a website?",
