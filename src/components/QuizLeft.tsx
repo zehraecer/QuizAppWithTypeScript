@@ -35,12 +35,16 @@ export const QuizLeft = () => {
                             </div >
                             :
 
-                            <div className="d-flex flex-column">
-                                <div className="d-flex flex-column quiz-left">
-                                    < span className="quiz-left-span3" >Questions {questionOrder + 1} of {questionsCategory.length}</span >
-                                    <span className="quiz-left-span2 quiz-left-span2-quiz">{questionsCategory[questionOrder]?.question} </span>
+                            <div className="d-flex flex-column justify-content-between quiz-left-div">
+                                <div className="d-flex flex-column quiz-left" style={{ flexGrow: 2, overflow: "auto" }}>
+                                    <span className="quiz-left-span3">
+                                        Questions {questionOrder + 1} of {questionsCategory.length}
+                                    </span>
+                                    <span className="quiz-left-span2 quiz-left-span2-quiz">
+                                        {questionsCategory[questionOrder]?.question}
+                                    </span>
                                 </div>
-                                <div className="radioDiv">
+                                <div className="radioDiv" style={{ position: "absolute", bottom: "0", width: "100%" }}>
                                     <input
                                         ref={rangeInputRef}
                                         type="range"
@@ -51,9 +55,9 @@ export const QuizLeft = () => {
                                         value={questionOrder + 1}
                                         readOnly
                                     />
-
                                 </div>
-                            </div >
+                            </div>
+
                     )
                     :
                     (
