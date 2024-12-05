@@ -419,6 +419,6 @@ input[type="range"]::-ms-thumb {
   }
 
   .quiz-wrapper {
-    margin-top: 15px;
+    margin-top: 15px !important;
   }
 }
