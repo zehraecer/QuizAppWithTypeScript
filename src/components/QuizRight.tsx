@@ -39,7 +39,12 @@ export const QuizRight = () => {
     }, [isCategory])
 
     const clickedOptionBtns = (a: string) => {
-        setClickedOption(a)
+
+        if (isSubmit) {
+            setClickedOption(a)
+        }
+        console.log("bu");
+
     }
 
     const submitBtn = () => {

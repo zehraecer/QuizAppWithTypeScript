@@ -7,11 +7,7 @@ export const Header = () => {
         throw new Error("Hata: `MyContext` değeri `undefined` oldu. Bu bileşen yalnızca `MyContext.Provider` içinde kullanılabilir.");
     }
     const { data, headerIcon } = context
-
-    console.log(headerIcon);
     const titleIcon = data.find(e => e.title === headerIcon)
-    console.log(titleIcon);
-
 
     return (
 
